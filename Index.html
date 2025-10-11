@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChicFemme Boutique - Mode & Beauté</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.8) 0%, rgba(255,192,203,0.4) 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            background-color: rgba(249, 168, 212, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-pink-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <i data-feather="shopping-bag" class="text-pink-500"></i>
+                    <span class="text-xl font-bold text-pink-600">ChicFemme</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-pink-500 font-medium">Accueil</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 font-medium">Vêtements</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 font-medium">Chaussures</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 font-medium">Maquillage</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="relative">
+                        <i data-feather="shopping-cart" class="text-gray-700 hover:text-pink-500"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                    <i data-feather="user" class="text-gray-700 hover:text-pink-500"></i>
+                    <button class="md:hidden focus:outline-none">
+                        <i data-feather="menu" class="text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern py-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Découvrez Votre Style Unique</h1>
+            <p class="text-xl text-gray-600 mb-8">Mode féminine, chaussures tendance et maquillage de qualité</p>
+            <button class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                Explorer la collection
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nos Catégories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                <img src="http://static.photos/fashion/640x360/1" alt="Vêtements" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Vêtements</h3>
+                    <p class="text-gray-600 mb-4">Robes, tops, pantalons et plus encore</p>
+                    <button class="text-pink-500 font-medium hover:text-pink-600">Parcourir →</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                <img src="http://static.photos/shoes/640x360/2" alt="Chaussures" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Chaussures</h3>
+                    <p class="text-gray-600 mb-4">Talon, plat, basket pour toutes occasions</p>
+                    <button class="text-pink-500 font-medium hover:text-pink-600">Parcourir →</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                <img src="http://static.photos/cosmetic/640x360/3" alt="Maquillage" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Maquillage</h3>
+                    <p class="text-gray-600 mb-4">Produits de qualité pour sublimer votre beauté</p>
+                    <button class="text-pink-500 font-medium hover:text-pink-600">Parcourir →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="max-w-6xl mx-auto px-4 py-12 bg-white">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Produits Populaires</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Product 1 - Dress -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                <div class="relative">
+                    <img src="http://static.photos/dress/640x360/4" alt="Robe élégante" class="w-full h-64 object-cover">
+                    <div class="absolute top-2 right-2">
+                        <button class="bg-white p-2 rounded-full shadow hover:bg-pink-50">
+                            <i data-feather="heart" class="text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Robe d'été élégante</h3>
+                    <p class="text-gray-600 text-sm mb-2">Disponible en plusieurs couleurs</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-pink-500 font-bold">€49.99</span>
+                        <div class="flex space-x-1">
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-gray-300">★</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('dress')" class="w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-full font-medium transition duration-300">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 - Shoes -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                <div class="relative">
+                    <img src="http://static.photos/heels/640x360/5" alt="Chaussures à talon" class="w-full h-64 object-cover">
+                    <div class="absolute top-2 right-2">
+                        <button class="bg-white p-2 rounded-full shadow hover:bg-pink-50">
+                            <i data-feather="heart" class="text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Talons classiques</h3>
+                    <p class="text-gray-600 text-sm mb-2">Disponible en plusieurs pointures</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-pink-500 font-bold">€79.99</span>
+                        <div class="flex space-x-1">
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('shoes')" class="w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-full font-medium transition duration-300">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 - Makeup -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                <div class="relative">
+                    <img src="http://static.photos/lipstick/640x360/6" alt="Rouge à lèvres" class="w-full h-64 object-cover">
+                    <div class="absolute top-2 right-2">
+                        <button class="bg-white p-2 rounded-full shadow hover:bg-pink-50">
+                            <i data-feather="heart" class="text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Rouge à lèvres mat</h3>
+                    <p class="text-gray-600 text-sm mb-2">10 teintes disponibles</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-pink-500 font-bold">€24.99</span>
+                        <div class="flex space-x-1">
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-gray-300">★</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('makeup')" class="w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-full font-medium transition duration-300">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4 - Bag -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                <div class="relative">
+                    <img src="http://static.photos/handbag/640x360/7" alt="Sac à main" class="w-full h-64 object-cover">
+                    <div class="absolute top-2 right-2">
+                        <button class="bg-white p-2 rounded-full shadow hover:bg-pink-50">
+                            <i data-feather="heart" class="text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Sac à main élégant</h3>
+                    <p class="text-gray-600 text-sm mb-2">Plusieurs coloris disponibles</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-pink-500 font-bold">€59.99</span>
+                        <div class="flex space-x-1">
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span>
+                            <span class="text-gray-300">★</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('bag')" class="w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-full font-medium transition duration-300">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="shopping-cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg max-w-md w-full max-h-screen overflow-y-auto">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold text-gray-800">Votre Panier</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="p-4">
+                <!-- Cart items will be dynamically added here -->
+                <div class="text-center py-8 text-gray-500">
+                    <i data-feather="shopping-cart" class="mx-auto mb-4 text-gray-300" width="48" height="48"></i>
+                    <p>Votre panier est vide</p>
+                </div>
+            </div>
+            <div id="cart-total" class="p-4 border-t hidden">
+                <div class="flex justify-between mb-4">
+                    <span class="font-medium">Sous-total</span>
+                    <span id="cart-subtotal" class="font-bold">€0.00</span>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-full font-semibold transition duration-300">
+                    Passer la commande
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Options Modal -->
+    <div id="product-options-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="product-modal-title" class="text-xl font-bold text-gray-800">Options du produit</h3>
+                <button onclick="closeOptionsModal()" class="text-gray-500 hover:text-gray-700">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            
+            <div id="dress-options" class="hidden">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Taille</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">XS</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">S</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">M</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">L</button>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Couleur</label>
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-white shadow-md"></button>
+                        <button class="w-8 h-8 rounded-full bg-blue-500 border-2 border-white shadow-md"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-500 border-2 border-white shadow-md"></button>
+                        <button class="w-8 h-8 rounded-full bg-black border-2 border-white shadow-md"></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="shoes-options" class="hidden">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Pointure</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">36</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">37</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">38</button>
+                        <button class="border rounded-md py-2 hover:bg-pink-50 hover:border-pink-300">39</button>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Couleur</label>
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 rounded-full bg-black border-2 border-white shadow-md"></button>
+                        <button class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 shadow-md"></button>
+                        <button class="w-8 h-8 rounded-full bg-beige-500 border-2 border-white shadow-md"></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="makeup-options" class="hidden">
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Teinte</label>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button class="w-8 h-8 rounded-full bg-red-300 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-red-400 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-red-500 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-red-600 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-red-700 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-300 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-400 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-500 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-600 border-2 border-white"></button>
+                        <button class="w-8 h-8 rounded-full bg-pink-700 border-2 border-white"></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Quantité</label>
+                <div class="flex items-center">
+                    <button class="border rounded-l-md px-3 py-1 hover:bg-pink-50">-</button>
+                    <input type="number" value="1" min="1" class="border-t border-b w-12 text-center py-1 px-2">
+                    <button class="border rounded-r-md px-3 py-1 hover:bg-pink-50">+</button>
+                </div>
+            </div>
+            
+            <button onclick="addToCart()" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-full font-semibold transition duration-300">
+                Ajouter au panier
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Page (hidden by default) -->
+    <div id="checkout-page" class="hidden max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Finaliser votre commande</h2>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Informations de livraison</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Nom complet</label>
+                            <input type="text" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Téléphone</label>
+                            <input type="tel" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Adresse</label>
+                            <textarea class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300" rows="3"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Ville</label>
+                            <input type="text" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Code postal</label>
+                                <input type="text" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Pays</label>
+                                <select class="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                                    <option>France</option>
+                                    <option>Belgique</option>
+                                    <option>Suisse</option>
+                                    <option>Luxembourg</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Votre commande</h3>
+                    <div class="border rounded-lg">
+                        <div id="checkout-items" class="p-4">
+                            <!-- Order summary items will appear here -->
+                        </div>
+                        <div class="border-t p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Sous-total</span>
+                                <span id="checkout-subtotal" class="font-medium">€0.00</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Livraison</span>
+                                <span class="font-medium">€5.99</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold mt-4">
+                                <span>Total</span>
+                                <span id="checkout-total">€0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Méthode de paiement</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <input type="radio" name="payment" id="credit-card" class="mr-2" checked>
+                                <label for="credit-card">Carte de crédit</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="payment" id="paypal" class="mr-2">
+                                <label for="paypal">PayPal</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="submitOrder()" class="w-full mt-8 bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-full font-semibold transition duration-300">
+                        Confirmer la commande
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ChicFemme</h3>
+                    <p class="text-gray-400">Votre destination pour la mode féminine et les produits de beauté.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Boutique</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nouveautés</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Vêtements</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Chaussures</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Maquillage</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Aide</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contactez-nous</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Livraison</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Retours</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos offres et nouveautés.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="px-3 py-2 rounded-l-md text-gray-800 w-full">
+                        <button class="bg-pink-500 hover:bg-pink-600 px-4 rounded-r-md">
+                            <i data-feather="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 ChicFemme Boutique. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize cart
+        let cart = [];
+        
+        // Modal functions
+        function openModal(productType) {
+            document.getElementById('shopping-cart-modal').classList.remove('hidden');
+            document.getElementById('shopping-cart-modal').classList.add('flex');
+            
+            // Hide all product option sections
+            document.getElementById('dress-options').classList.add('hidden');
+            document.getElementById('shoes-options').classList.add('hidden');
+            document.getElementById('makeup-options').classList.add('hidden');
+            
+            // Show the appropriate section based on product type
+            if (productType === 'dress') {
+                document.getElementById('dress-options').classList.remove('hidden');
+                document.getElementById('product-modal-title').textContent = 'Options pour robe';
+            } else if (productType === 'shoes') {
+                document.getElementById('shoes-options').classList.remove('hidden');
+                document.getElementById('product-modal-title').textContent = 'Options pour chaussures';
+            } else if (productType === 'makeup') {
+                document.getElementById('makeup-options').classList.remove('hidden');
+                document.getElementById('product-modal-title').textContent = 'Options pour maquillage';
+            }
+            
+            document.getElementById('product-options-modal').classList.remove('hidden');
+            document.getElementById('product-options-modal').classList.add('flex');
+        }
+        
+        function closeModal() {
+            document.getElementById('shopping-cart-modal').classList.add('hidden');
+            document.getElementById('shopping-cart-modal').classList.remove('flex');
+        }
+        
+        function closeOptionsModal() {
+            document.getElementById('product-options-modal').classList.add('hidden');
+            document.getElementById('product-options-modal').classList.remove('flex');
+        }
+        
+        // Add to cart function
+        function addToCart() {
+            // This would be more dynamic in a real implementation
+            const randomId = Math.floor(Math.random() * 10000);
+            const product = {
+                id: randomId,
+                name: "Produit ajouté",
+                price: 29.99,
+                quantity: 1
+            };
+            
+            cart.push(product);
+            updateCart();
+            closeOptionsModal();
+        }
+        
+        // Update cart display
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalContainer = document.getElementById('cart-total');
+            const cartCountElement = document.getElementById('cart-count');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-8 text-gray-500">
+                        <i data-feather="shopping-cart" class="mx-auto mb-4 text-gray-300" width="48" height="48"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                `;
+                cartTotalContainer.classList.add('hidden');
+                cartCountElement.textContent = '0';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                let subtotal = 0;
+                
+                cart.forEach(item => {
+                    subtotal += item.price * item.quantity;
+                    
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item flex justify-between items-center py-3 border-b';
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-sm text-gray-500">1 x €${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-medium mr-4">€${(item.price * item.quantity).toFixed(2)}</span>
+                            <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500">
+                                <i data-feather="trash-2" width="18"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.appendChild(itemElement);
+                });
+                
+                document.getElementById('cart-subtotal').textContent = `€${subtotal.toFixed(2)}`;
+                cartTotalContainer.classList.remove('hidden');
+                cartCountElement.textContent = cart.length;
+            }
+            
+            feather.replace();
+        }
+        
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+        
+        // Proceed to checkout
+        function proceedToCheckout() {
+            document.getElementById('shopping-cart-modal').classList.add('hidden');
+            document.getElementById('shopping-cart-modal').classList.remove('flex');
+            document.getElementById('checkout-page').classList.remove('hidden');
+            
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            let subtotal = 0;
+            
+            checkoutItemsContainer.innerHTML = '';
+            
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'flex justify-between items-center py-2';
+                itemElement.innerHTML = `
+                    <div>
+                        <span class="font-medium">${item.name}</span>
+                        <span class="text-gray-500 text-sm block">1 x €${item.price.toFixed(2)}</span>
+                    </div>
+                    <span class="font-medium">€${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                
+                checkoutItemsContainer.appendChild(itemElement);
+            });
+            
+            document.getElementById('checkout-subtotal').textContent = `€${subtotal.toFixed(2)}`;
+            document.getElementById('checkout-total').textContent = `€${(subtotal + 5.99).toFixed(2)}`;
+        }
+        
+        // Submit order
+        function submitOrder() {
+            alert('Merci pour votre commande! Nous la traiterons dès que possible.');
+            cart = [];
+            updateCart();
+            document.getElementById('checkout-page').classList.add('hidden');
+        }
+        
+        // Initialize feather icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
